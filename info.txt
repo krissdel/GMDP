@@ -1,0 +1,38 @@
+créé index.html
+puis style.css 
+index.js
+
+2) dans index.html 
+<div class="app">
+      <!-- on est obliger de faire un input 
+        car pour pouvoir copier , il faut un input 
+    on ne peut pas copier dan un h3 par exemple  -->
+      <input
+        type="text"
+        id="password-ouput"
+        value="Générateur de MDP"
+        readonly
+      />
+
+      <!-- il faut mettre une value si on veut pouvoir écrir a l'interrieur de l'input   -->
+      <!-- avec le readonly on ne peut plus changer le texte  -->
+    </div>
+
+    3) dans index.html 
+    on créé un input de type range 
+    pour afficher en temps réelle 
+    on indique les valeur au min4 et au max 24 et une value 8
+        <div class="range-container">
+        <input type="range" id="password-length" min="4" max="24" value="8" />
+      </div>
+    4) a l'interrieur, on rajoute un input de type text.
+
+    5) ensuite il faut connecter les 2 input , pour cela on rajoute 
+    dans l'input de type range   oninput="document.getElementById('display-password-length')
+
+    puis on rajoute --> value=this.value" ==> on créé un évenement sur l'input , 
+    et on lui passe sa valeur avec this
+
+    6>
+
+    2h20
