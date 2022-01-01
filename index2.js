@@ -2,6 +2,9 @@
 
 // il faudrait pour commencer se créé une fonction qu'on appel lorqu'on appuie sur le boutton
 // et sa nous génere un mot de passe (créon cette logique )
+const passwordOutput = document.getElementById("password-output");
+// on vérrifit
+console.log(passwordOutput);
 
 function generatePassword() {
   // on verrifie
@@ -48,7 +51,14 @@ const dataNumbers = "0123456789";
 const dataSymbols = "&é'(-è_çà)\"=^$ù!:;,µ%";
 // on verifie avec un console.log();
 // ---------------
+const rangeValue = document.getElementById("password-length");
+//--> (mettre cette varriable en haut )
+// on verrifie
+console.log(rangeValue); // on peut voir que l'on est dans un objet
+// donc comment on circule dans un objet ??
 
+// on ecrit :
+console.log(rangeValue.value);
 // maintenant, il faudrait savoir, ce qui a été coché,
 // pour le mettre dans un tableau global
 
@@ -58,6 +68,7 @@ function generatePassword() {
   //   les données qui on été coché:
 
   let data = [];
+  let password = "";
   // pour verifier  ce qui a été coché, on ecrit :
   console.log(lowercase.checked); // il me dit true
   console.log(uppercase.checked); // ilme dit false,
@@ -120,6 +131,36 @@ function generatePassword() {
   //  on ecrit :
   console.log(data[Math.floor(Math.random() * data.length)]);
   //  grace a cette façon d'ecrire, on obtient dans tous les cas une valeur au hazard
+  if (data.length === 0) {
+    alert("veuilez selectionner de parametres");
+    return; // ceux dire que sa fini la
+  }
+  // il va falloire utiliser une boucle for dans la fonction generatePassword
+  for (i = 0; i < rangeValue.value; i++) {
+    // console.log(data[Math.floor(Math.random() * data.length)]);
+    // password = data[Math.floor(Math.random() * data.length)];
+    // console.log(password);
+    //  pour cumuler toutes les lettres, on ecrit
+    password += data[Math.floor(Math.random() * data.length)];
+    console.log(password);
+  }
+  passwordOutput.value = password;
+  passwordOutput.select(); //--> qui va le selectionner
+  // et pour copier on ecrit :
+  document.execCommande("copy");
+
+  // ---------------
+  // l'utilisateur ne sait pas que le mot de pass est copier
+  // pour faire en sorte  qu'il le sache, on pourrai modifier
+  // le contenu du text generer mot de passe en--> mot de passe copier
+
+  // on ecrit :
+  generateButton.textContent = "Copié !!!";
+
+  // pour que le boutton revienne a l'état initial, on ecrit :
+  setTimeout(() => {
+    generateButton.textContent = "Générer mot de passe ";
+  }, 2000);
 }
 
 //   -------------
@@ -129,81 +170,3 @@ function generatePassword() {
 //   comment on fait ??:
 // on recupere  la valeur (value) de ce qu'il y a ecrit dans le range
 // on ecrit :
-const rangeValue = document.getElementById("password-length");
-//--> (mettre cette varriable en haut )
-// on verrifie
-console.log(rangeValue); // on peut voir que l'on est dans un objet
-// donc comment on circule dans un objet ??
-
-// on ecrit :
-console.log(rangeValue.value);
-// il va falloire utiliser une boucle for dans la fonction generatePassword
-for (i = 0; i < rangeValue.value; i++) {
-  //en gros tu continue , tant que i est inferieur a la valeur de rangValue
-  console.log(data[Math.floor(Math.random() * data.length)]);
-}
-
-// --------------------
-// par contre si rien n'est coché on a undefined
-// donc on va mettre une petite securité avant la boucle for
-// on ecrit :
-if (data.length === 0) {
-  alert("veuilez selectionner de parametres");
-  return; // ceux dire que sa fini la
-}
-
-// -------------------
-// mainteant, il faudrait  stocké toutes s'est donné
-//  on peut les stocker dans un tableau
-// on rajoute en haut de la fonction generatePassword()
-// un let  : on ecrit :
-let password = "";
-
-//  et au niveau de la boucle for on change le console log avec
-// password ce qui donne :
-
-for (i = 0; i < rangeValue.value; i++) {
-  password = data[Math.floor(Math.random() * data.length)];
-  console.log(password); // on a qu'une seul lettre
-  //   si on veut que sa affiche toutes les lettres
-  // on ecrit :
-  password += data[Math.floor(Math.random() * data.length)];
-  console.log(password);
-}
-// une fois qu'on a reussie a tout afficher dans la consol
-//  il faut faire en sort de le rendre a l'ecran
-
-//  on rajoute une constante tout en haut
-// on ecrit :
-const passwordOutput = document.getElementById("password-output");
-// on vérrifit
-console.log(passwordOutput);
-
-//  du coup appres la boucle for on ecrit :
-// lorqu'il s'agit d'un input , on ne peut pas mettre
-// ni de l' InnerHtml ni  du textcontent
-
-// donc pour mettre quelque choses dans l'input on utilise la value
-//  de l'input dans le index.html
-
-passwordOutput.value = password;
-
-// Maintenant  si on veut copier le mot de passe
-//  on peut utiliser en javascript le execCommande
-// on ecrit tout d'abord :
-passwordOutput.select(); //--> qui va le selectionner
-// et pour copier on ecrit :
-document.execCommande("copy");
-
-// ---------------
-// l'utilisateur ne sait pas que le mot de pass est copier
-// pour faire en sorte  qu'il le sache, on pourrai modifier
-// le contenu du text generer mot de passe en--> mot de passe copier
-
-// on ecrit :
-generateButton.textContent = "Copié !!!";
-
-// pour que le boutton revienne a l'état initial, on ecrit :
-setTimeout(() => {
-  generateButton.textContent = "Générer mot de passe ";
-}, 2000);

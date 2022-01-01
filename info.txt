@@ -33,6 +33,10 @@ index.js
     puis on rajoute --> value=this.value" ==> on créé un évenement sur l'input , 
     et on lui passe sa valeur avec this
 
-    6>
+    6> on met ensuite un bouton 
+          <button id="generateButton">Générer mot de passe</button>
 
-    2h20
+====================================
+on passe ensuite au Js 
+on va dans index.js
+   
