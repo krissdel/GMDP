@@ -193,7 +193,7 @@ passwordOutput.value = password;
 // on ecrit tout d'abord :
 passwordOutput.select(); //--> qui va le selectionner
 // et pour copier on ecrit :
-document.execCommande("copy");
+document.execCommande("copy"); //==> obsolete
 
 // ---------------
 // l'utilisateur ne sait pas que le mot de pass est copier
