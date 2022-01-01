@@ -99,6 +99,19 @@ label {
   transition: 0.2s ease;
   cursor: pointer;
 }
+
+.fa-clone:hover {
+  cursor: pointer;
+}
+.fa-clone:active {
+  transform: scale(1.01);
+}
+
+span.far.fa-clone {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
 button {
   margin: 14px 0 20px;
   background-image: linear-gradient(120deg, #79bdfc 0%, #4f81b1 100%);

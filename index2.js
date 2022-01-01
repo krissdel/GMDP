@@ -26,15 +26,34 @@ function generatePassword() {
     console.log(password);
   }
   passwordOutput.value = password;
-  passwordOutput.select();
 
+  //  -----------[ancienne methode]--------------
+  //   passwordOutput.select();
   //   document.execCommande("copy"); //==> obsolete
 
-  generateButton.textContent = "Sélectionné !";
+  //   ------------------------
 
-  setTimeout(() => {
-    generateButton.textContent = "Générer mot de passe ";
-  }, 2000);
+  //   navigator.clipboard.writeText(rangeValue.innerText);
+
+  //   generateButton.textContent = "copier !";
+
+  //   setTimeout(() => {
+  //     generateButton.textContent = "Générer mot de passe ";
+  //   }, 2000);
 }
+
+const btnCopy = document.querySelector("span");
+console.log(btnCopy);
+// const txtCopy = document.getElementById("password-output").value;
+// console.log(txtCopy);
+
+btnCopy.addEventListener("click", () => {
+  passwordOutput.select(); //--> qui va le selectionner
+  // et pour copier on ecrit :
+  document.execCommand("copy"); //==> obsolete
+  //   navigator.clipboard.writeText(txtCopy.value);
+  //   console.log(test);
+  //   console.log(e.target.previousElementSibling.innerText);
+});
 
 generateButton.addEventListener("click", generatePassword);
