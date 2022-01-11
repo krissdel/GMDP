@@ -18,6 +18,7 @@ index.js
       <!-- avec le readonly on ne peut plus changer le texte  -->
     </div>
 
+
     3) dans index.html 
     on créé un input de type range 
     pour afficher en temps réelle 
